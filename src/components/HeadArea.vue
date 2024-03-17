@@ -5,9 +5,9 @@
       <vue-particles id="tsparticles" :particlesInit="particlesInit" :particlesLoaded="particlesLoaded" :options="options" />
     </div>
     <div class="info-container">
-      <div class="info-category">共享单车需求分析系统</div>
-      <div class="info-name"> 单车数据 </div>
-      <div class="info-slogan">Research and Practice</div>
+      <div class="info-category"> Trafformer </div>
+      <div class="info-name"> {{ info.label }} </div>
+      <div class="info-slogan"> Research and Practice </div>
     </div>
     <div class="search-bar-container">
     </div>
@@ -20,7 +20,7 @@ import { pclOption } from '@/settings/particles/circle'
 
 export default {
   name: 'HeadArea',
-  props:['info', 'host'],
+  props: ['info', 'host'],
   components: {
   },
   data(){
@@ -71,7 +71,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  //background-color: rgba(234, 233, 232, 0.5);
+  background-color: rgba(234, 233, 232, 0.5);
   opacity: 0.4;
   //filter: blur(1px);
   background-size: cover;
