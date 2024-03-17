@@ -1,0 +1,75 @@
+// 主题配色方案
+// 包含字体、背景等的颜色
+// 
+
+// 基本配色，每个组件都有两套颜色，一深一浅
+$basic: (
+    icon_dark: #333,
+    icon_light: #ccc,
+    font_dark: #333,
+    font_light: #eee,
+    background_dark: #111,
+    background_light: #fff,
+);
+
+// 用于模式切换的颜色表
+$themes: (
+    day: (
+        main_color1: #fef7c0,
+        main_color2: #ffe2a8,
+        main_color3: #f1a67b, // main_color3用于配置element-plus的主题色
+        main_color4: #677782,
+        main_color5: #b9cfda,
+
+
+
+        icon_color1: map-get($basic, icon_dark),
+        icon_color2: map-get($basic, icon_light),
+        font_color1: map-get($basic, font_dark),
+        font_color2: map-get($basic, font_light),
+        background_color1: map-get($basic, background_light),
+        background_color2: map-get($basic, background_dark),
+
+        border_style1: 1px solid #373a41,
+        border_style2: 1px solid #e6e6e8,
+
+        cate_card_bk_color1: rgba(253, 253, 248, 0.6),
+            cate_card_bk_color2: rgba(248, 248, 221, 0.6),
+            cate_card_bk_color3: rgba(253, 253, 248, 0.9),
+    ),
+
+    night: (
+        main_color1: #fef7c0,
+        main_color2: #ffe2a8,
+        main_color3: #f1a67b, // main_color3用于配置element-plus的主题色
+        main_color4: #677782,
+        main_color5: #b9cfda,
+
+        icon_color1: map-get($basic, icon_light),
+        icon_color2: map-get($basic, icon_dark),
+        font_color1: map-get($basic, font_light),
+        font_color2: map-get($basic, font_dark),
+        background_color1: map-get($basic, background_dark),
+        background_color2: map-get($basic, background_light),
+
+        border_style1: 1px solid #e6e6e8,
+        border_style2: 1px solid #373a41,
+
+            cate_card_bk_color1: rgba(253, 253, 248, 0.6),
+            cate_card_bk_color2: rgba(248, 248, 221, 0.6),
+            cate_card_bk_color3: rgba(253, 253, 248, 0.9),
+    ),
+
+);
+
+
+// 修改element-plus主题色
+@forward "element-plus/theme-chalk/src/common/var.scss" with ($colors: ("primary": ("base": map-get($themes, day, main_color3)),
+        // "success": ("base": red),
+        // "warning": ("base": #FF771C),
+        // "danger": ("base": #ff3030),
+        // "error": ("base": #ff3030),
+        // "info": ("base": #9e9e9e),
+    ));
+
+@use 'element-plus/theme-chalk/src/index.scss' as *;
