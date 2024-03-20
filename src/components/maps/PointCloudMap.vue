@@ -1,6 +1,6 @@
 <template>
   <div class="map-container">
-    这里是地图
+    这里是3D点云图
     <div id="map"></div>
   </div>
 </template>
@@ -126,11 +126,28 @@ export default {
       });
       loca.add(ll);
 
+      // 高度升起动画
+      map.on('complete', function () {
+        setTimeout(function () {
+          ll.show(500);
+          ll.addAnimate({
+            key: 'height',
+            value: [0, 1],
+            duration: 500,
+            easing: 'Linear',
+            transform: 500,
+            random: true,
+            delay: 10000,
+          });
+        }, 800);
+      });
+      loca.animate.start();
+
       // 图例
       var lengend = new Loca.Legend({
         loca: loca,
         title: {
-          label: '车辆密度(辆)',
+          label: '单车需求量',
           fontColor: 'rgba(255,255,255,0.4)',
           fontSize: '16px',
         },

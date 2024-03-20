@@ -1,20 +1,24 @@
 <template>
-
   <div class="main-container" id="container1">
     <div class="full-screen-bg"></div>
-    <basic-map></basic-map>
+    <component :is="curComponent"></component>
+<!--    <router-view></router-view>-->
+<!--    <basic-map></basic-map>-->
   </div>
 </template>
 
 <script>
-import BasicMap from "@/components/maps/BasicMap.vue";
-
+import PointCloudMap from "@/components/maps/PointCloudMap.vue";
+import LinkMap from "@/components/maps/LinkMap.vue";
+import PolygonMap from "@/components/maps/PolygonMap.vue";
 
 export default {
   name: "MainArea",
-  props: ['info'],
+  props: ['curComponent'],
   components: {
-    BasicMap
+    PointCloudMap,
+    LinkMap,
+    PolygonMap,
   },
   data() {
     return {

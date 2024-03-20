@@ -5,7 +5,27 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    // children: [
+    //   // 默认二级路由 车辆密度点云图
+    //   {
+    //     path: '',
+    //     name: "pointCloud",
+    //     component: () => import('../components/maps/PointCloudMap.vue'),
+    //   },
+    //   // 连接线
+    //   {
+    //     path: '/link',
+    //     name: 'link',
+    //     component: () => import('../components/maps/LinkMap.vue'),
+    //   },
+    //   // 多边形区域划片
+    //   {
+    //     path: '/polygon',
+    //     name: 'polygon',
+    //     component: () => import('../components/maps/PolygonMap.vue'),
+    //   },
+    // ]
   },
   {
     path: '/about',

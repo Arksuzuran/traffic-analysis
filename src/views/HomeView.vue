@@ -2,21 +2,24 @@
   <div class="home">
     <Nav :selectHandler="selectHandler" :topLabelList="topLabelList" class="second-header"></Nav>
 <!--    <HeadArea :info="titleInfo"></HeadArea>-->
-    <MainArea></MainArea>
+    <MainArea :curComponent="curComponent"></MainArea>
   </div>
 </template>
 
 <script>
 import Nav from "@/components/Nav.vue";
-import HeadArea from "@/components/HeadArea.vue";
+// import HeadArea from "@/components/HeadArea.vue";
 import MainArea from "@/components/MainArea.vue";
 
 import bus from "@/utils/emitter";
+import PointCloudMap from "@/components/maps/PointCloudMap.vue";
+import LinkMap from "@/components/maps/LinkMap.vue";
+import PolygonMap from "@/components/maps/PolygonMap.vue";
 
 export default {
   name: 'HomeView',
   components: {
-    HeadArea,
+    // HeadArea,
     Nav,
     MainArea,
   },
@@ -24,26 +27,21 @@ export default {
     return {
       activeLabel: 0,
       topLabelList: [
-        { id: 0, label: '流出量', type: 'out'},
-        { id: 1, label: '流入量', type: 'in'},
-        { id: 2, label: '流量总和', type: 'all'},
-        { id: 3, label: '', type: 'conference'},
+        { id: 0, label: '单车密度分布', map: 'PointCloudMap'},
+        { id: 1, label: '单车调度优化', map: 'LinkMap'},
+        { id: 2, label: '电子围栏划片', map: 'PolygonMap'},
       ],
     }
   },
   computed: {
-    titleInfo() {
-      return {
-        type: 'Academic',
-        label: this.topLabelList[this.activeLabel].label,
-        slogan: 'References Hub',
-      }
-    },
+    curComponent() {
+      return this.topLabelList[this.activeLabel].map
+    }
   },
   methods: {
     selectHandler(index){
       this.activeLabel = index;
-      bus.emit('updateMapType', { type: this.type})
+      bus.emit('updateMapType', { map: this.topLabelList[this.activeLabel].map})
     }
   },
 
